@@ -8,71 +8,31 @@ Never re-explain your architecture, decisions, or progress to AI assistants agai
 
 ---
 
-## The Problem
+## 🚀 Installation
 
-When working with AI coding tools like:
-
-- ChatGPT  
-- Cursor  
-- Claude  
-- Copilot  
-- Windsurf  
-
-Context is lost between sessions.
-
-You repeatedly explain:
-
-- Architecture  
-- Decisions  
-- Current progress  
-- What you already tried  
-
-This reduces productivity.
-
----
-
-## The Solution
-
-ContextMemory is a CLI tool that:
-
-- Saves your coding context  
-- Restores it instantly  
-- Works across sessions, machines, and teams  
-- Works with any programming language  
-
-Spring Boot, React, Node, Python — all supported.
-
----
-
-## Installation
-
-Install globally:
+Install globally from npm:
 
 ```bash
-npm install -g contextmemory
+npm install -g @akashkobal/contextmemory
 ```
 
-Or install from source:
+Verify installation:
 
 ```bash
-git clone https://github.com/AkashKobal/contextmemory.git
-cd contextmemory
-npm install
-npm run build
-npm link
+contextmemory --help
 ```
 
 ---
 
-## Quick Start
+## ⚡ Quick Start
 
-Initialize in your project:
+Initialize inside your project:
 
 ```bash
 contextmemory init
 ```
 
-Save your context:
+Save your working context:
 
 ```bash
 contextmemory save
@@ -84,44 +44,18 @@ Quick save:
 contextmemory save "Implemented multi-model execution"
 ```
 
-Resume context:
+Resume your context:
 
 ```bash
 contextmemory resume
 ```
 
 This copies a formatted prompt to your clipboard.  
-Paste it into ChatGPT, Cursor, or Claude.
+Paste it into ChatGPT, Cursor, Claude, or any AI coding tool.
 
 ---
 
-## Example Workflow
-
-Start work:
-
-```bash
-contextmemory resume
-```
-
-Work normally on your code.
-
-End work:
-
-```bash
-contextmemory save "Added parallel execution using CompletableFuture"
-```
-
-Next day:
-
-```bash
-contextmemory resume
-```
-
-Continue immediately.
-
----
-
-## Project Structure
+## 🧠 How It Works
 
 ContextMemory creates:
 
@@ -133,106 +67,40 @@ ContextMemory creates:
 │   ├── entry-2.json
 ```
 
-Stores:
+Each entry captures:
 
-- Task  
-- Goal  
-- Decisions  
-- Approaches  
-- Current state  
-- Next steps  
+- Task
+- Goal
+- Approaches
+- Decisions
+- Current State
+- Next Steps
 
 ---
 
-## Commands
+## 📦 Commands
 
-### Core Commands
-
-Initialize:
+### Core
 
 ```bash
 contextmemory init
-```
-
-Save context:
-
-```bash
 contextmemory save
-```
-
-Quick save:
-
-```bash
-contextmemory save "message"
-```
-
-Resume context:
-
-```bash
 contextmemory resume
-```
-
-View history:
-
-```bash
 contextmemory log
-```
-
-Show git diff summary:
-
-```bash
 contextmemory diff
 ```
 
----
-
-### Automation Commands
-
-Auto-save on file changes:
+### Automation
 
 ```bash
 contextmemory watch
-```
-
-Install git hook:
-
-```bash
 contextmemory hook install
-```
-
-Team handoff:
-
-```bash
 contextmemory handoff @username
 ```
 
 ---
 
-## Example: Spring Boot Project
-
-Initialize:
-
-```bash
-contextmemory init
-```
-
-After implementing services:
-
-```bash
-contextmemory save "Implemented ModelRouterService and model integrations"
-```
-
-Next day:
-
-```bash
-contextmemory resume
-```
-
-AI understands your architecture instantly.
-
----
-
-## MCP Integration (Optional)
+## 🔌 MCP Integration (Optional)
 
 Add to your MCP configuration:
 
@@ -241,65 +109,40 @@ Add to your MCP configuration:
   "mcpServers": {
     "contextmemory": {
       "command": "npx",
-      "args": ["-y", "contextmemory", "mcp"]
+      "args": ["-y", "@akashkobal/contextmemory", "mcp"]
     }
   }
 }
 ```
 
-Exposes tools:
+---
 
-- contextmemory_save  
-- contextmemory_resume  
-- contextmemory_log  
+## 🏗 Works With
+
+- Spring Boot
+- React
+- Node.js
+- Python
+- Microservices
+- Monorepos
+
+AI Tools:
+
+- ChatGPT
+- Cursor
+- Claude
+- Copilot
+- Windsurf
 
 ---
 
-## Supported Environments
+## 📄 License
 
-Works with:
-
-- Spring Boot  
-- React  
-- Node.js  
-- Python  
-- Microservices  
-- Monorepos  
-
-Works with AI tools:
-
-- ChatGPT  
-- Cursor  
-- Claude  
-- Copilot  
-- Windsurf  
+MIT
 
 ---
 
-## License
-
-MIT License
-
----
-
-## Author
+## 👨‍💻 Author
 
 Akash Kobal  
-
-GitHub:  
-https://github.com/AkashKobal/contextmemory
-
----
-
-## Contributing
-
-Pull requests are welcome.
-
----
-
-## Roadmap
-
-- Cloud sync  
-- Team dashboards  
-- VS Code extension  
-- Enterprise edition  
+GitHub: https://github.com/AkashKobal
