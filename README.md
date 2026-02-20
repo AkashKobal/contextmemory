@@ -1,3 +1,6 @@
+![npm](https://img.shields.io/npm/v/@akashkobal/contextmemory)
+![license](https://img.shields.io/npm/l/@akashkobal/contextmemory)
+
 # ContextMemory 🧠
 
 Persistent AI coding context memory for developers and teams.
