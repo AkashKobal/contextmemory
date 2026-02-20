@@ -9,7 +9,7 @@ import { callAI } from "../core/ai";
 
 export async function suggestCommand() {
     if (!(await isInitialized())) {
-        console.log(chalk.red("✗ DevContext not initialized. Run `devctx init` first."));
+        console.log(chalk.red("✗ DevContext not initialized. Run `contextmemory init` first."));
         return;
     }
 

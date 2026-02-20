@@ -11,7 +11,7 @@ const context_1 = require("../core/context");
 const git_1 = require("../core/git");
 async function handoffCommand(assignee, message) {
     if (!(await (0, context_1.isInitialized)())) {
-        console.log(chalk_1.default.red("✗ DevContext not initialized. Run `devctx init` first."));
+        console.log(chalk_1.default.red("✗ DevContext not initialized. Run `contextmemory init` first."));
         return;
     }
     try {
@@ -108,7 +108,7 @@ async function handoffCommand(assignee, message) {
             console.log(chalk_1.default.gray(`  Branch: ${branch}`));
             console.log(chalk_1.default.cyan(`\n  📝 Handoff Note:`));
             console.log(chalk_1.default.white(`  ${handoffNote}\n`));
-            console.log(chalk_1.default.gray(`  They can resume with: ${chalk_1.default.white("devctx resume --branch " + branch)}`));
+            console.log(chalk_1.default.gray(`  They can resume with: ${chalk_1.default.white("contextmemory resume --branch " + branch)}`));
         }
         else {
             // Quick mode — minimal context with handoff
@@ -142,7 +142,7 @@ async function handoffCommand(assignee, message) {
             console.log(chalk_1.default.gray(`  Branch: ${branch}`));
             console.log(chalk_1.default.cyan(`\n  📝 Handoff Note:`));
             console.log(chalk_1.default.white(`  ${handoffNote}\n`));
-            console.log(chalk_1.default.gray(`  They can resume with: ${chalk_1.default.white("devctx resume --branch " + branch)}`));
+            console.log(chalk_1.default.gray(`  They can resume with: ${chalk_1.default.white("contextmemory resume --branch " + branch)}`));
         }
     }
     catch (err) {

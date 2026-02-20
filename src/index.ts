@@ -17,7 +17,7 @@ import { configCommand } from "./commands/config-cmd";
 const program = new Command();
 
 program
-  .name("devctx")
+  .name("contextmemory")
   .description("Persistent AI coding context for teams")
   .version("0.5.0");
 
@@ -65,8 +65,8 @@ program
 
 program
   .command("share")
-  .description("Share .devctx/ via git for team collaboration")
-  .option("--stop", "Stop sharing (add .devctx/ back to .gitignore)")
+  .description("Share .contextmemory/ via git for team collaboration")
+  .option("--stop", "Stop sharing (add .contextmemory/ back to .gitignore)")
   .action(shareCommand);
 
 // v0.3 — Auto-Capture

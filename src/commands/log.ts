@@ -4,7 +4,7 @@ import { getCurrentBranch } from "../core/git";
 
 export async function logCommand(options?: { all?: boolean; count?: string }) {
   if (!(await isInitialized())) {
-    console.log(chalk.red("✗ DevContext not initialized. Run `devctx init` first."));
+    console.log(chalk.red("✗ DevContext not initialized. Run `contextmemory init` first."));
     return;
   }
 

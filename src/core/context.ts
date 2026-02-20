@@ -5,7 +5,7 @@ import { getRepoRoot } from "./git";
 
 export async function getDevCtxDir(): Promise<string> {
   const root = await getRepoRoot();
-  return path.join(root, ".devctx");
+  return path.join(root, ".contextmemory");
 }
 
 export async function isInitialized(): Promise<boolean> {

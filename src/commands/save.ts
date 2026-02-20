@@ -27,7 +27,7 @@ interface SaveOptions {
 
 export async function saveCommand(message?: string, options?: SaveOptions) {
   if (!(await isInitialized())) {
-    console.log(chalk.red("✗ DevContext not initialized. Run `devctx init` first."));
+    console.log(chalk.red("✗ DevContext not initialized. Run `contextmemory init` first."));
     return;
   }
 

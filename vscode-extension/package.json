@@ -1,5 +1,5 @@
 {
-  "name": "devctx-vscode",
+  "name": "contextmemory-vscode",
   "displayName": "DevContext",
   "description": "Persistent AI coding context — auto-resume on workspace open",
   "version": "0.5.0",
@@ -17,19 +17,19 @@
   "contributes": {
     "commands": [
       {
-        "command": "devctx.save",
+        "command": "contextmemory.save",
         "title": "DevContext: Save Context"
       },
       {
-        "command": "devctx.resume",
+        "command": "contextmemory.resume",
         "title": "DevContext: Resume Context"
       },
       {
-        "command": "devctx.log",
+        "command": "contextmemory.log",
         "title": "DevContext: View Log"
       },
       {
-        "command": "devctx.diff",
+        "command": "contextmemory.diff",
         "title": "DevContext: Show Diff"
       }
     ]

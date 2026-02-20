@@ -7,13 +7,13 @@
  * for Claude Code and other MCP-compatible clients.
  *
  * Usage:
- *   devctx-mcp                    # stdio transport (default)
+ *   contextmemory-mcp                    # stdio transport (default)
  *
  * Configure in Claude Code's MCP settings:
  *   {
  *     "mcpServers": {
- *       "devctx": {
- *         "command": "devctx-mcp"
+ *       "contextmemory": {
+ *         "command": "contextmemory-mcp"
  *       }
  *     }
  *   }
@@ -27,7 +27,7 @@ const git_1 = require("./core/git");
 const prompt_1 = require("./core/prompt");
 const uuid_1 = require("uuid");
 const server = new mcp_js_1.McpServer({
-    name: "devctx",
+    name: "contextmemory",
     version: "0.5.0",
 });
 const resumeSchema = {
@@ -35,13 +35,13 @@ const resumeSchema = {
 };
 server.tool("devctx_resume", "Generate AI-ready context prompt for the current or specified branch", resumeSchema, async ({ branch }) => {
     if (!(await (0, context_1.isInitialized)())) {
-        return { content: [{ type: "text", text: "DevContext not initialized. Run `devctx init` first." }] };
+        return { content: [{ type: "text", text: "DevContext not initialized. Run `contextmemory init` first." }] };
     }
     const targetBranch = branch || (await (0, git_1.getCurrentBranch)());
     const entries = await (0, context_1.loadBranchContext)(targetBranch);
     if (entries.length === 0) {
         return {
-            content: [{ type: "text", text: `No context found for branch: ${targetBranch}. Run \`devctx save\` first.` }],
+            content: [{ type: "text", text: `No context found for branch: ${targetBranch}. Run \`contextmemory save\` first.` }],
         };
     }
     const prompt = (0, prompt_1.generatePrompt)(entries);
@@ -57,7 +57,7 @@ const saveSchema = {
 };
 server.tool("devctx_save", "Save current coding context with a message", saveSchema, async ({ message, goal, approaches, decisions, currentState, nextSteps }) => {
     if (!(await (0, context_1.isInitialized)())) {
-        return { content: [{ type: "text", text: "DevContext not initialized. Run `devctx init` first." }] };
+        return { content: [{ type: "text", text: "DevContext not initialized. Run `contextmemory init` first." }] };
     }
     const [branch, repo, filesChanged, filesStaged, recentCommits, author] = await Promise.all([
         (0, git_1.getCurrentBranch)(),
@@ -130,7 +130,7 @@ server.tool("devctx_log", "View context history for the current branch or all br
     };
 });
 // --- Resources ---
-server.resource("context", "devctx://context", async (uri) => {
+server.resource("context", "contextmemory://context", async (uri) => {
     if (!(await (0, context_1.isInitialized)())) {
         return { contents: [{ uri: uri.href, text: "DevContext not initialized.", mimeType: "text/plain" }] };
     }

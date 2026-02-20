@@ -6,7 +6,7 @@ import { copyToClipboard } from "../utils/clipboard";
 
 export async function resumeCommand(options?: { branch?: string; stdout?: boolean }) {
   if (!(await isInitialized())) {
-    console.log(chalk.red("✗ DevContext not initialized. Run `devctx init` first."));
+    console.log(chalk.red("✗ DevContext not initialized. Run `contextmemory init` first."));
     return;
   }
 
@@ -16,7 +16,7 @@ export async function resumeCommand(options?: { branch?: string; stdout?: boolea
 
     if (entries.length === 0) {
       console.log(chalk.yellow(`⚠ No context found for branch: ${branch}`));
-      console.log(chalk.gray("  Run `devctx save` to capture context first."));
+      console.log(chalk.gray("  Run `contextmemory save` to capture context first."));
       return;
     }
 

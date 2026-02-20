@@ -45,11 +45,11 @@ function activate(context) {
     outputChannel = vscode.window.createOutputChannel("DevContext");
     // Create status bar item
     statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
-    statusBarItem.command = "devctx.resume";
+    statusBarItem.command = "contextmemory.resume";
     statusBarItem.tooltip = "Click to resume DevContext";
     context.subscriptions.push(statusBarItem);
     // Register commands
-    context.subscriptions.push(vscode.commands.registerCommand("devctx.save", saveContext), vscode.commands.registerCommand("devctx.resume", resumeContext), vscode.commands.registerCommand("devctx.log", showLog), vscode.commands.registerCommand("devctx.diff", showDiff));
+    context.subscriptions.push(vscode.commands.registerCommand("contextmemory.save", saveContext), vscode.commands.registerCommand("contextmemory.resume", resumeContext), vscode.commands.registerCommand("contextmemory.log", showLog), vscode.commands.registerCommand("contextmemory.diff", showDiff));
     // Auto-resume on workspace open
     autoResume();
     // Update status bar
@@ -64,7 +64,7 @@ async function runDevCtx(args, cwd) {
     if (!workspaceFolder) {
         throw new Error("No workspace folder open");
     }
-    return execAsync(`npx devctx ${args}`, { cwd: workspaceFolder });
+    return execAsync(`npx contextmemory ${args}`, { cwd: workspaceFolder });
 }
 async function autoResume() {
     try {
@@ -77,7 +77,7 @@ async function autoResume() {
         }
     }
     catch {
-        // Silently fail — devctx may not be initialized
+        // Silently fail — contextmemory may not be initialized
     }
 }
 async function saveContext() {
@@ -139,16 +139,16 @@ async function updateStatusBar() {
             // Extract timestamp from log output
             const match = stdout.match(/\[([^\]]+)\]/);
             if (match) {
-                statusBarItem.text = `$(history) DevCtx: ${match[1]}`;
+                statusBarItem.text = `$(history) contextmemory: ${match[1]}`;
                 statusBarItem.show();
                 return;
             }
         }
-        statusBarItem.text = "$(history) DevCtx";
+        statusBarItem.text = "$(history) contextmemory";
         statusBarItem.show();
     }
     catch {
-        statusBarItem.text = "$(history) DevCtx: No context";
+        statusBarItem.text = "$(history) contextmemory: No context";
         statusBarItem.show();
     }
 }

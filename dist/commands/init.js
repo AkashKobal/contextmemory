@@ -11,7 +11,7 @@ const git_1 = require("../core/git");
 async function initCommand() {
     try {
         const root = await (0, git_1.getRepoRoot)();
-        const devctxDir = path_1.default.join(root, ".devctx");
+        const devctxDir = path_1.default.join(root, ".contextmemory");
         if (fs_1.default.existsSync(devctxDir)) {
             console.log(chalk_1.default.yellow("⚠ DevContext already initialized in this repo."));
             return;
@@ -31,12 +31,12 @@ async function initCommand() {
         const gitignoreContent = fs_1.default.existsSync(gitignorePath)
             ? fs_1.default.readFileSync(gitignorePath, "utf-8")
             : "";
-        if (!gitignoreContent.includes(".devctx/")) {
-            fs_1.default.appendFileSync(gitignorePath, "\n# DevContext - AI coding context\n.devctx/\n");
-            console.log(chalk_1.default.gray("  Added .devctx/ to .gitignore"));
+        if (!gitignoreContent.includes(".contextmemory/")) {
+            fs_1.default.appendFileSync(gitignorePath, "\n# DevContext - AI coding context\n.contextmemory/\n");
+            console.log(chalk_1.default.gray("  Added .contextmemory/ to .gitignore"));
         }
         console.log(chalk_1.default.green(`✓ Initialized DevContext in ${root}`));
-        console.log(chalk_1.default.gray("  Run `devctx save` to capture your first context."));
+        console.log(chalk_1.default.gray("  Run `contextmemory save` to capture your first context."));
     }
     catch (err) {
         if (err.message?.includes("not a git repository")) {

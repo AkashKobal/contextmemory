@@ -1,5 +1,5 @@
 {
-  "name": "devctx",
+  "name": "contextmemory",
   "version": "0.5.0",
   "description": "Persistent AI coding context for teams. Git tracks code history. DevContext tracks intent history.",
   "keywords": [
@@ -19,8 +19,8 @@
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "devctx": "dist/index.js",
-    "devctx-mcp": "dist/mcp-server.js"
+    "contextmemory": "dist/index.js",
+    "contextmemory-mcp": "dist/mcp-server.js"
   },
   "scripts": {
     "build": "tsc",

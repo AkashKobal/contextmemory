@@ -17,7 +17,7 @@ const compress_1 = require("./commands/compress");
 const config_cmd_1 = require("./commands/config-cmd");
 const program = new commander_1.Command();
 program
-    .name("devctx")
+    .name("contextmemory")
     .description("Persistent AI coding context for teams")
     .version("0.5.0");
 program
@@ -58,8 +58,8 @@ program
     .action(handoff_1.handoffCommand);
 program
     .command("share")
-    .description("Share .devctx/ via git for team collaboration")
-    .option("--stop", "Stop sharing (add .devctx/ back to .gitignore)")
+    .description("Share .contextmemory/ via git for team collaboration")
+    .option("--stop", "Stop sharing (add .contextmemory/ back to .gitignore)")
     .action(share_1.shareCommand);
 // v0.3 — Auto-Capture
 program

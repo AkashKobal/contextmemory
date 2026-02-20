@@ -19,7 +19,7 @@ const DEFAULT_CONFIG = {
     aiModel: "gpt-4o-mini",
 };
 /**
- * Load user preferences from `.devctx/config.json`.
+ * Load user preferences from `.contextmemory/config.json`.
  * Returns defaults if the file doesn't exist or is malformed.
  */
 async function loadConfig() {
@@ -36,7 +36,7 @@ async function loadConfig() {
     }
 }
 /**
- * Save user preferences to `.devctx/config.json`.
+ * Save user preferences to `.contextmemory/config.json`.
  * Merges with existing config so partial updates work.
  */
 async function saveConfig(partial) {

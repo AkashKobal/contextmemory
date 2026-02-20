@@ -10,7 +10,7 @@ const git_1 = require("../core/git");
 const ai_1 = require("../core/ai");
 async function suggestCommand() {
     if (!(await (0, context_1.isInitialized)())) {
-        console.log(chalk_1.default.red("✗ DevContext not initialized. Run `devctx init` first."));
+        console.log(chalk_1.default.red("✗ DevContext not initialized. Run `contextmemory init` first."));
         return;
     }
     try {

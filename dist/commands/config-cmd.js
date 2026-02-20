@@ -20,7 +20,7 @@ const VALID_KEYS = [
 ];
 async function configCommand(action, key, value) {
     if (!(await (0, context_1.isInitialized)())) {
-        console.log(chalk_1.default.red("✗ DevContext not initialized. Run `devctx init` first."));
+        console.log(chalk_1.default.red("✗ DevContext not initialized. Run `contextmemory init` first."));
         return;
     }
     try {
@@ -40,7 +40,7 @@ async function configCommand(action, key, value) {
         }
         if (action === "get") {
             if (!key) {
-                console.log(chalk_1.default.red("✗ Usage: devctx config get <key>"));
+                console.log(chalk_1.default.red("✗ Usage: contextmemory config get <key>"));
                 return;
             }
             if (!VALID_KEYS.includes(key)) {
@@ -54,7 +54,7 @@ async function configCommand(action, key, value) {
         }
         if (action === "set") {
             if (!key || value === undefined) {
-                console.log(chalk_1.default.red("✗ Usage: devctx config set <key> <value>"));
+                console.log(chalk_1.default.red("✗ Usage: contextmemory config set <key> <value>"));
                 return;
             }
             if (!VALID_KEYS.includes(key)) {
@@ -76,7 +76,7 @@ async function configCommand(action, key, value) {
             return;
         }
         console.log(chalk_1.default.red(`✗ Unknown action: ${action}`));
-        console.log(chalk_1.default.gray("  Usage: devctx config [list|get|set] [key] [value]"));
+        console.log(chalk_1.default.gray("  Usage: contextmemory config [list|get|set] [key] [value]"));
     }
     catch (err) {
         console.log(chalk_1.default.red(`✗ Error: ${err.message}`));

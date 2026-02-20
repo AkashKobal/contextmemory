@@ -10,55 +10,55 @@ export async function shareCommand(options?: { stop?: boolean }) {
     try {
         const root = await getRepoRoot();
         const gitignorePath = path.join(root, ".gitignore");
-        const devctxDir = path.join(root, ".devctx");
+        const devctxDir = path.join(root, ".contextmemory");
 
         if (!fs.existsSync(devctxDir)) {
-            console.log(chalk.red("✗ DevContext not initialized. Run `devctx init` first."));
+            console.log(chalk.red("✗ DevContext not initialized. Run `contextmemory init` first."));
             return;
         }
 
         if (options?.stop) {
-            // Add .devctx/ back to .gitignore
+            // Add .contextmemory/ back to .gitignore
             const gitignoreContent = fs.existsSync(gitignorePath)
                 ? fs.readFileSync(gitignorePath, "utf-8")
                 : "";
 
-            if (!gitignoreContent.includes(".devctx/")) {
-                fs.appendFileSync(gitignorePath, "\n.devctx/\n");
+            if (!gitignoreContent.includes(".contextmemory/")) {
+                fs.appendFileSync(gitignorePath, "\n.contextmemory/\n");
             }
 
             console.log(chalk.green("✓ Stopped sharing DevContext"));
-            console.log(chalk.gray("  .devctx/ added back to .gitignore"));
+            console.log(chalk.gray("  .contextmemory/ added back to .gitignore"));
             console.log(
-                chalk.gray("  Note: Existing .devctx/ files remain in git history.")
+                chalk.gray("  Note: Existing .contextmemory/ files remain in git history.")
             );
             return;
         }
 
-        // Remove .devctx/ from .gitignore
+        // Remove .contextmemory/ from .gitignore
         if (fs.existsSync(gitignorePath)) {
             let content = fs.readFileSync(gitignorePath, "utf-8");
             content = content
                 .split("\n")
                 .filter(
                     (line) =>
-                        line.trim() !== ".devctx/" &&
-                        line.trim() !== ".devctx" &&
+                        line.trim() !== ".contextmemory/" &&
+                        line.trim() !== ".contextmemory" &&
                         line.trim() !== "# DevContext - AI coding context"
                 )
                 .join("\n");
             fs.writeFileSync(gitignorePath, content);
         }
 
-        // Stage .devctx/ and commit
-        await git.add([".devctx/", ".gitignore"]);
+        // Stage .contextmemory/ and commit
+        await git.add([".contextmemory/", ".gitignore"]);
         await git.commit("chore: share DevContext with team");
 
         console.log(chalk.green("✓ DevContext is now shared with your team!"));
-        console.log(chalk.gray("  .devctx/ removed from .gitignore"));
+        console.log(chalk.gray("  .contextmemory/ removed from .gitignore"));
         console.log(chalk.gray("  Committed: \"chore: share DevContext with team\""));
         console.log(chalk.gray("\n  Push to share: git push"));
-        console.log(chalk.gray("  Stop sharing: devctx share --stop"));
+        console.log(chalk.gray("  Stop sharing: contextmemory share --stop"));
     } catch (err: any) {
         console.log(chalk.red(`✗ Error: ${err.message}`));
     }

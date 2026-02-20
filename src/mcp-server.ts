@@ -6,13 +6,13 @@
  * for Claude Code and other MCP-compatible clients.
  *
  * Usage:
- *   devctx-mcp                    # stdio transport (default)
+ *   contextmemory-mcp                    # stdio transport (default)
  *
  * Configure in Claude Code's MCP settings:
  *   {
  *     "mcpServers": {
- *       "devctx": {
- *         "command": "devctx-mcp"
+ *       "contextmemory": {
+ *         "command": "contextmemory-mcp"
  *       }
  *     }
  *   }
@@ -28,7 +28,7 @@ import { ContextEntry } from "./core/types";
 import { v4 as uuid } from "uuid";
 
 const server = new McpServer({
-    name: "devctx",
+    name: "contextmemory",
     version: "0.5.0",
 });
 
@@ -48,7 +48,7 @@ server.tool(
     resumeSchema as any,
     async ({ branch }: ResumeArgs) => {
         if (!(await isInitialized())) {
-            return { content: [{ type: "text" as const, text: "DevContext not initialized. Run `devctx init` first." }] };
+            return { content: [{ type: "text" as const, text: "DevContext not initialized. Run `contextmemory init` first." }] };
         }
 
         const targetBranch = branch || (await getCurrentBranch());
@@ -56,7 +56,7 @@ server.tool(
 
         if (entries.length === 0) {
             return {
-                content: [{ type: "text" as const, text: `No context found for branch: ${targetBranch}. Run \`devctx save\` first.` }],
+                content: [{ type: "text" as const, text: `No context found for branch: ${targetBranch}. Run \`contextmemory save\` first.` }],
             };
         }
 
@@ -89,7 +89,7 @@ server.tool(
     saveSchema as any,
     async ({ message, goal, approaches, decisions, currentState, nextSteps }: SaveArgs) => {
         if (!(await isInitialized())) {
-            return { content: [{ type: "text" as const, text: "DevContext not initialized. Run `devctx init` first." }] };
+            return { content: [{ type: "text" as const, text: "DevContext not initialized. Run `contextmemory init` first." }] };
         }
 
         const [branch, repo, filesChanged, filesStaged, recentCommits, author] = await Promise.all([
@@ -191,7 +191,7 @@ server.tool(
 
 server.resource(
     "context",
-    "devctx://context",
+    "contextmemory://context",
     async (uri) => {
         if (!(await isInitialized())) {
             return { contents: [{ uri: uri.href, text: "DevContext not initialized.", mimeType: "text/plain" }] };

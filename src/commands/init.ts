@@ -7,7 +7,7 @@ import { DevCtxConfig } from "../core/types";
 export async function initCommand() {
   try {
     const root = await getRepoRoot();
-    const devctxDir = path.join(root, ".devctx");
+    const devctxDir = path.join(root, ".contextmemory");
 
     if (fs.existsSync(devctxDir)) {
       console.log(chalk.yellow("⚠ DevContext already initialized in this repo."));
@@ -32,13 +32,13 @@ export async function initCommand() {
       ? fs.readFileSync(gitignorePath, "utf-8")
       : "";
 
-    if (!gitignoreContent.includes(".devctx/")) {
-      fs.appendFileSync(gitignorePath, "\n# DevContext - AI coding context\n.devctx/\n");
-      console.log(chalk.gray("  Added .devctx/ to .gitignore"));
+    if (!gitignoreContent.includes(".contextmemory/")) {
+      fs.appendFileSync(gitignorePath, "\n# DevContext - AI coding context\n.contextmemory/\n");
+      console.log(chalk.gray("  Added .contextmemory/ to .gitignore"));
     }
 
     console.log(chalk.green(`✓ Initialized DevContext in ${root}`));
-    console.log(chalk.gray("  Run `devctx save` to capture your first context."));
+    console.log(chalk.gray("  Run `contextmemory save` to capture your first context."));
   } catch (err: any) {
     if (err.message?.includes("not a git repository")) {
       console.log(chalk.red("✗ Not a git repository. Run `git init` first."));

@@ -4,7 +4,7 @@ description: Save full context from current AI conversation to DevContext
 
 # Save Context Workflow
 
-When the user says `/save-context`, you must introspect the **entire current conversation** and extract the following, then call `devctx save` with all of it.
+When the user says `/save-context`, you must introspect the **entire current conversation** and extract the following, then call `contextmemory save` with all of it.
 
 ## Steps
 
@@ -20,7 +20,7 @@ When the user says `/save-context`, you must introspect the **entire current con
 
 // turbo
 ```bash
-devctx save "TASK_SUMMARY" \
+contextmemory save "TASK_SUMMARY" \
   --approaches "approach 1;; approach 2;; approach 3" \
   --decisions "decision 1;; decision 2" \
   --state "Current state description" \
@@ -37,7 +37,7 @@ Omit any flags that don't apply (e.g., no `--blockers` if there are none).
 If the conversation was about refactoring a payment service:
 
 ```bash
-devctx save "Refactoring payment service from REST to event sourcing" \
+contextmemory save "Refactoring payment service from REST to event sourcing" \
   --approaches "Tried direct DB events first, too coupled;; Switched to dedicated event store;; Considered Kafka but went with simpler in-process event bus" \
   --decisions "Using event sourcing for payment state;; In-process event bus for MVP, Kafka for scale;; Keeping REST endpoints as thin adapters over command handlers" \
   --state "Command handlers working for CreatePayment and RefundPayment. Event store persists and replays correctly. Need to wire up read-side projections." \

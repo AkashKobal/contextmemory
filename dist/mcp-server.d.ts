@@ -6,13 +6,13 @@
  * for Claude Code and other MCP-compatible clients.
  *
  * Usage:
- *   devctx-mcp                    # stdio transport (default)
+ *   contextmemory-mcp                    # stdio transport (default)
  *
  * Configure in Claude Code's MCP settings:
  *   {
  *     "mcpServers": {
- *       "devctx": {
- *         "command": "devctx-mcp"
+ *       "contextmemory": {
+ *         "command": "contextmemory-mcp"
  *       }
  *     }
  *   }

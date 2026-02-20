@@ -19,12 +19,12 @@ async function hookCommand(action) {
                 return;
             }
             const content = fs_1.default.readFileSync(hookPath, "utf-8");
-            if (!content.includes("devctx")) {
+            if (!content.includes("contextmemory")) {
                 console.log(chalk_1.default.yellow("⚠ post-commit hook exists but was not created by DevContext."));
                 return;
             }
-            // Remove only the devctx line, preserve other hooks
-            const lines = content.split("\n").filter((l) => !l.includes("devctx"));
+            // Remove only the contextmemory line, preserve other hooks
+            const lines = content.split("\n").filter((l) => !l.includes("contextmemory"));
             if (lines.filter((l) => l.trim() && !l.startsWith("#!")).length === 0) {
                 fs_1.default.unlinkSync(hookPath);
             }
@@ -40,7 +40,7 @@ async function hookCommand(action) {
         let hookContent = "#!/bin/sh\n";
         if (fs_1.default.existsSync(hookPath)) {
             const existing = fs_1.default.readFileSync(hookPath, "utf-8");
-            if (existing.includes("devctx")) {
+            if (existing.includes("contextmemory")) {
                 console.log(chalk_1.default.yellow("⚠ DevContext post-commit hook already installed."));
                 return;
             }
@@ -52,7 +52,7 @@ async function hookCommand(action) {
         fs_1.default.chmodSync(hookPath, "755");
         console.log(chalk_1.default.green("✓ Installed DevContext post-commit hook"));
         console.log(chalk_1.default.gray("  Context will be auto-saved on every commit."));
-        console.log(chalk_1.default.gray("  Remove with: devctx hook remove"));
+        console.log(chalk_1.default.gray("  Remove with: contextmemory hook remove"));
     }
     catch (err) {
         console.log(chalk_1.default.red(`✗ Error: ${err.message}`));

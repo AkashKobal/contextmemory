@@ -15,16 +15,16 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.StatusBarAlignment.Left,
         100
     );
-    statusBarItem.command = "devctx.resume";
+    statusBarItem.command = "contextmemory.resume";
     statusBarItem.tooltip = "Click to resume DevContext";
     context.subscriptions.push(statusBarItem);
 
     // Register commands
     context.subscriptions.push(
-        vscode.commands.registerCommand("devctx.save", saveContext),
-        vscode.commands.registerCommand("devctx.resume", resumeContext),
-        vscode.commands.registerCommand("devctx.log", showLog),
-        vscode.commands.registerCommand("devctx.diff", showDiff)
+        vscode.commands.registerCommand("contextmemory.save", saveContext),
+        vscode.commands.registerCommand("contextmemory.resume", resumeContext),
+        vscode.commands.registerCommand("contextmemory.log", showLog),
+        vscode.commands.registerCommand("contextmemory.diff", showDiff)
     );
 
     // Auto-resume on workspace open
@@ -48,7 +48,7 @@ async function runDevCtx(
         throw new Error("No workspace folder open");
     }
 
-    return execAsync(`npx devctx ${args}`, { cwd: workspaceFolder });
+    return execAsync(`npx contextmemory ${args}`, { cwd: workspaceFolder });
 }
 
 async function autoResume() {
@@ -61,7 +61,7 @@ async function autoResume() {
             outputChannel.show(true); // true = preserve focus
         }
     } catch {
-        // Silently fail — devctx may not be initialized
+        // Silently fail — contextmemory may not be initialized
     }
 }
 
@@ -125,15 +125,15 @@ async function updateStatusBar() {
             // Extract timestamp from log output
             const match = stdout.match(/\[([^\]]+)\]/);
             if (match) {
-                statusBarItem.text = `$(history) DevCtx: ${match[1]}`;
+                statusBarItem.text = `$(history) contextmemory: ${match[1]}`;
                 statusBarItem.show();
                 return;
             }
         }
-        statusBarItem.text = "$(history) DevCtx";
+        statusBarItem.text = "$(history) contextmemory";
         statusBarItem.show();
     } catch {
-        statusBarItem.text = "$(history) DevCtx: No context";
+        statusBarItem.text = "$(history) contextmemory: No context";
         statusBarItem.show();
     }
 }

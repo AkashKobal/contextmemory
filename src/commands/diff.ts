@@ -14,7 +14,7 @@ function getTimeAgo(timestamp: string): string {
 
 export async function diffCommand() {
     if (!(await isInitialized())) {
-        console.log(chalk.red("✗ DevContext not initialized. Run `devctx init` first."));
+        console.log(chalk.red("✗ DevContext not initialized. Run `contextmemory init` first."));
         return;
     }
 
@@ -24,7 +24,7 @@ export async function diffCommand() {
 
         if (entries.length === 0) {
             console.log(chalk.yellow(`⚠ No context found for branch: ${branch}`));
-            console.log(chalk.gray("  Run `devctx save` to capture context first."));
+            console.log(chalk.gray("  Run `contextmemory save` to capture context first."));
             return;
         }
 

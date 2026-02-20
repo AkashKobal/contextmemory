@@ -17,7 +17,7 @@ export async function handoffCommand(
     message?: string
 ) {
     if (!(await isInitialized())) {
-        console.log(chalk.red("✗ DevContext not initialized. Run `devctx init` first."));
+        console.log(chalk.red("✗ DevContext not initialized. Run `contextmemory init` first."));
         return;
     }
 
@@ -128,7 +128,7 @@ export async function handoffCommand(
             console.log(chalk.white(`  ${handoffNote}\n`));
             console.log(
                 chalk.gray(
-                    `  They can resume with: ${chalk.white("devctx resume --branch " + branch)}`
+                    `  They can resume with: ${chalk.white("contextmemory resume --branch " + branch)}`
                 )
             );
         } else {
@@ -169,7 +169,7 @@ export async function handoffCommand(
             console.log(chalk.white(`  ${handoffNote}\n`));
             console.log(
                 chalk.gray(
-                    `  They can resume with: ${chalk.white("devctx resume --branch " + branch)}`
+                    `  They can resume with: ${chalk.white("contextmemory resume --branch " + branch)}`
                 )
             );
         }

@@ -9,10 +9,10 @@ When the user says `/resume-context`, load the saved DevContext for the current 
 ## Steps
 
 // turbo
-1. Run `devctx resume --stdout` to get the formatted context:
+1. Run `contextmemory resume --stdout` to get the formatted context:
 
 ```bash
-devctx resume --stdout
+contextmemory resume --stdout
 ```
 
 2. Read the output and **internalize it** — treat it as your briefing on:

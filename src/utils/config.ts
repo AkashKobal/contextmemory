@@ -35,7 +35,7 @@ const DEFAULT_CONFIG: UserConfig = {
 };
 
 /**
- * Load user preferences from `.devctx/config.json`.
+ * Load user preferences from `.contextmemory/config.json`.
  * Returns defaults if the file doesn't exist or is malformed.
  */
 export async function loadConfig(): Promise<UserConfig> {
@@ -53,7 +53,7 @@ export async function loadConfig(): Promise<UserConfig> {
 }
 
 /**
- * Save user preferences to `.devctx/config.json`.
+ * Save user preferences to `.contextmemory/config.json`.
  * Merges with existing config so partial updates work.
  */
 export async function saveConfig(partial: Partial<UserConfig>): Promise<void> {

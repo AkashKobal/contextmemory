@@ -13,7 +13,7 @@ const simple_git_1 = __importDefault(require("simple-git"));
 const git = (0, simple_git_1.default)();
 async function summarizeCommand() {
     if (!(await (0, context_1.isInitialized)())) {
-        console.log(chalk_1.default.red("✗ DevContext not initialized. Run `devctx init` first."));
+        console.log(chalk_1.default.red("✗ DevContext not initialized. Run `contextmemory init` first."));
         return;
     }
     try {

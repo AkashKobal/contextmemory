@@ -8,13 +8,13 @@ const config_1 = require("../utils/config");
  */
 async function callAI(messages, options) {
     const config = await (0, config_1.loadConfig)();
-    const apiKey = process.env.DEVCTX_AI_KEY || config.aiApiKey;
-    const baseUrl = process.env.DEVCTX_AI_PROVIDER || config.aiProvider;
-    const model = process.env.DEVCTX_AI_MODEL || config.aiModel;
+    const apiKey = process.env.contextmemory_AI_KEY || config.aiApiKey;
+    const baseUrl = process.env.contextmemory_AI_PROVIDER || config.aiProvider;
+    const model = process.env.contextmemory_AI_MODEL || config.aiModel;
     if (!apiKey && baseUrl.includes("openai.com")) {
         return {
             content: "",
-            error: "No API key configured. Set DEVCTX_AI_KEY env var or run: devctx config set aiApiKey <key>",
+            error: "No API key configured. Set DEVCTX_AI_KEY env var or run: contextmemory config set aiApiKey <key>",
         };
     }
     try {

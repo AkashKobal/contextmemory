@@ -15,7 +15,7 @@ const path_1 = __importDefault(require("path"));
 const git_1 = require("./git");
 async function getDevCtxDir() {
     const root = await (0, git_1.getRepoRoot)();
-    return path_1.default.join(root, ".devctx");
+    return path_1.default.join(root, ".contextmemory");
 }
 async function isInitialized() {
     const dir = await getDevCtxDir();

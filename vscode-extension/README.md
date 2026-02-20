@@ -12,15 +12,15 @@ DevContext is a CLI tool and VS Code extension for persistent AI coding context.
 
 ## Requirements
 
-- DevContext CLI installed globally or locally (`npm install -g devctx`).
+- DevContext CLI installed globally or locally (`npm install -g contextmemory`).
 - Git initialized in the workspace.
 
 ## Extension Settings
 
 This extension contributes the following settings:
 
-* `devctx.autoResume`: Enable/disable auto-resume on startup.
-* `devctx.defaultBranch`: Default branch to track context for.
+* `contextmemory.autoResume`: Enable/disable auto-resume on startup.
+* `contextmemory.defaultBranch`: Default branch to track context for.
 
 ## Known Issues
 

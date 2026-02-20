@@ -19,12 +19,12 @@ export interface UserConfig {
     aiApiKey?: string;
 }
 /**
- * Load user preferences from `.devctx/config.json`.
+ * Load user preferences from `.contextmemory/config.json`.
  * Returns defaults if the file doesn't exist or is malformed.
  */
 export declare function loadConfig(): Promise<UserConfig>;
 /**
- * Save user preferences to `.devctx/config.json`.
+ * Save user preferences to `.contextmemory/config.json`.
  * Merges with existing config so partial updates work.
  */
 export declare function saveConfig(partial: Partial<UserConfig>): Promise<void>;

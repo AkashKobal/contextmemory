@@ -17,7 +17,7 @@ import { loadConfig } from "../utils/config";
 
 export async function watchCommand(options?: { interval?: string }) {
     if (!(await isInitialized())) {
-        console.log(chalk.red("✗ DevContext not initialized. Run `devctx init` first."));
+        console.log(chalk.red("✗ DevContext not initialized. Run `contextmemory init` first."));
         return;
     }
 
@@ -42,7 +42,7 @@ export async function watchCommand(options?: { interval?: string }) {
                 "**/node_modules/**",
                 "**/dist/**",
                 "**/build/**",
-                "**/.devctx/**",
+                "**/.contextmemory/**",
                 "**/package-lock.json",
             ],
             persistent: true,

@@ -20,7 +20,7 @@ function getTimeAgo(timestamp) {
 }
 async function diffCommand() {
     if (!(await (0, context_1.isInitialized)())) {
-        console.log(chalk_1.default.red("✗ DevContext not initialized. Run `devctx init` first."));
+        console.log(chalk_1.default.red("✗ DevContext not initialized. Run `contextmemory init` first."));
         return;
     }
     try {
@@ -28,7 +28,7 @@ async function diffCommand() {
         const entries = await (0, context_1.loadBranchContext)(branch);
         if (entries.length === 0) {
             console.log(chalk_1.default.yellow(`⚠ No context found for branch: ${branch}`));
-            console.log(chalk_1.default.gray("  Run `devctx save` to capture context first."));
+            console.log(chalk_1.default.gray("  Run `contextmemory save` to capture context first."));
             return;
         }
         const latest = entries[entries.length - 1];
