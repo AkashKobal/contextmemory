@@ -3,11 +3,11 @@
 
 # ContextMemory 🧠
 
-Persistent AI coding context memory for developers and teams.
+Persistent AI coding context memory for developers and teams. Git tracks your code history. **ContextMemory tracks your intent history.** Never re-explain your architecture, decisions, or progress to AI assistants again.
 
-Git tracks your code history. **ContextMemory tracks your intent history.**
+You're deep in a Cursor session refactoring a payment service. You've explained the architecture, tried 3 approaches, finally found the right one. Session dies. Next morning — or worse, your teammate picks it up — and the AI has zero memory. You spend 15 min re-explaining everything. Every. Single. Time.
 
-Never re-explain your architecture, decisions, or progress to AI assistants again.
+This is broken across every AI coding tool: Cursor, Claude Code, Copilot, Windsurf — none of them persist context across sessions, editors, or team members.  
 
 ---
 
